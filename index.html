@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<!--
+  =====================================================
+  📄 index.html — EL ESQUELETO
+  =====================================================
+  Este archivo define QUÉ hay en la página:
+  textos, secciones, botones, imágenes, enlaces.
+  
+  NO define cómo se ve (eso es el CSS)
+  NO define cómo se comporta (eso es el JS)
+  
+  Piénsalo como el plano de una casa:
+  define dónde van las paredes, puertas y ventanas,
+  pero no el color ni la funcionalidad eléctrica.
+  =====================================================
+-->
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juan Alexis Leiva Leiva — Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!--
+    🔗 ASÍ SE VINCULA EL CSS:
+    Le decimos al HTML "busca el archivo styles.css dentro de la carpeta css/"
+    rel="stylesheet" le indica que es un archivo de estilos.
+    Esto SIEMPRE va en el <head>.
+  -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="#inicio" class="nav-logo">JALL.</a>
+    <ul class="nav-links">
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#habilidades">Skills</a></li>
+      <li><a href="#experiencia">Experiencia</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <div class="available-badge">
+        <span class="dot"></span>
+        Disponible para trabajar
+      </div>
+      <div class="hero-tag">// Ing. Sistemas e Informática</div>
+      <h1>
+        Hola, soy<br>
+        <span class="gradient-text">Juan Alexis Leiva Leiva</span>
+      </h1>
+      <p class="hero-desc">
+        Bachiller en Ingeniería de Sistemas enfocado en <strong>desarrollo web full-stack</strong>.
+        Construyo aplicaciones con JavaScript, React, PHP y Java — combinando lógica técnica
+        con experiencia real en entornos empresariales.
+      </p>
+      <div class="hero-buttons">
+        <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+        <a href="#contacto" class="btn btn-outline">Contactarme</a>
+        <a href="https://www.linkedin.com/in/leiva-leiva-juan-alexis/" target="_blank" class="btn btn-outline">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MÍ -->
+  <section id="sobre-mi" class="fade-in">
+    <div class="section-label">// 01. Sobre mí</div>
+    <h2 class="section-title">¿Quién soy?</h2>
+    <p class="section-sub">Un ingeniero de sistemas con experiencia técnica real y hambre de seguir creciendo en el mundo del desarrollo.</p>
+
+    <div class="about-grid">
+      <div class="stat-card">
+        <div class="stat-num">16.7</div>
+        <div class="stat-label">Promedio universitario / 20</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2+</div>
+        <div class="stat-label">Años en soporte técnico</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Certificaciones</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">B1</div>
+        <div class="stat-label">Inglés técnico</div>
+      </div>
+    </div>
+
+    <div class="about-text">
+      <p>
+        Soy bachiller en <strong>Ingeniería de Sistemas e Informática</strong> por la Universidad Continental
+        (Huancayo, Perú), donde mantuve un promedio de <strong>16.7/20</strong> y fui reconocido con una
+        <strong>beca al mérito académico</strong>.
+      </p>
+      <p>
+        Mi experiencia abarca soporte técnico, implementación de sistemas ERP, análisis de datos con Power BI
+        y gestión académica. Ahora estoy enfocado en convertirme en <strong>desarrollador web full-stack</strong>,
+        construyendo proyectos reales con las tecnologías más demandadas del mercado.
+      </p>
+      <p>
+        Me motivan los retos técnicos, el aprendizaje continuo y crear soluciones que tengan impacto real.
+        Fui <strong>Buddy Académico</strong> en mi universidad, mentoreando a estudiantes de semestres menores.
+      </p>
+    </div>
+  </section>
+
+  <!-- HABILIDADES -->
+  <section id="habilidades" class="fade-in">
+    <div class="section-label">// 02. Habilidades</div>
+    <h2 class="section-title">Stack técnico</h2>
+    <p class="section-sub">Tecnologías que manejo y estoy profundizando activamente.</p>
+
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">⚡ Frontend</div>
+        <div class="skill-tags">
+          <span class="skill-tag">HTML5</span>
+          <span class="skill-tag">CSS3</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">Responsive Design</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">🔧 Backend</div>
+        <div class="skill-tags">
+          <span class="skill-tag">PHP</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">REST APIs</span>
+          <span class="skill-tag">C++</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">🗄️ Datos & BD</div>
+        <div class="skill-tags">
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Excel / Office 365</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">🛠️ Herramientas</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">Linux</span>
+          <span class="skill-tag">Windows</span>
+          <span class="skill-tag">Visual Studio Code</span>
+          <span class="skill-tag">Scrum / Agile</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCIA -->
+  <section id="experiencia" class="fade-in">
+    <div class="section-label">// 03. Experiencia</div>
+    <h2 class="section-title">Trayectoria profesional</h2>
+    <p class="section-sub">Experiencia en entornos técnicos reales, desde soporte hasta gestión de sistemas.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">Enero 2026 – Febrero 2026</div>
+        <div class="timeline-role">Tutor Académico</div>
+        <div class="timeline-company">Academias Zárate · Huancayo, Junín</div>
+        <div class="timeline-desc">Tutorías personalizadas a estudiantes, seguimiento de progreso y fomento del aprendizaje colaborativo.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Marzo 2024 – Marzo 2025</div>
+        <div class="timeline-role">Auxiliar en Soporte Técnico y Mantenimiento</div>
+        <div class="timeline-company">Bronto Security & Technology S.A.C. · Huancayo, Junín</div>
+        <div class="timeline-desc">Instalación, configuración y mantenimiento de equipos informáticos y sistemas de seguridad. Diagnóstico de hardware/software y documentación técnica.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Mayo 2023 – Octubre 2023</div>
+        <div class="timeline-role">Practicante en Gestión Académica y Soporte ERP</div>
+        <div class="timeline-company">UNCP – Gestión e Innovación Académica · Huancayo, Junín</div>
+        <div class="timeline-desc">Soporte y mejora de módulos ERP. Capacitación a usuarios e integración de datos entre departamentos.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Diciembre 2023 – Febrero 2024</div>
+        <div class="timeline-role">Asesor de Ventas</div>
+        <div class="timeline-company">Cerámicos Luz · Huancayo, Junín</div>
+        <div class="timeline-desc">Atención personalizada a clientes, gestión de inventario y fidelización comercial.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos" class="fade-in">
+    <div class="section-label">// 04. Proyectos</div>
+    <h2 class="section-title">Lo que estoy construyendo</h2>
+    <p class="section-sub">Portfolio en desarrollo activo — actualizando con nuevos proyectos cada semana.</p>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-icon">🌐</div>
+        <div class="project-name">Portfolio Personal</div>
+        <div class="project-desc">Este mismo sitio. Diseñado y desarrollado desde cero con HTML, CSS y JavaScript puro.</div>
+        <div class="project-techs">
+          <span class="tech tech-js">JavaScript</span>
+          <span class="tech tech-html">HTML5</span>
+          <span class="tech tech-css">CSS3</span>
+        </div>
+        <span class="project-status status-building">🔨 En desarrollo</span>
+      </div>
+      <div class="project-card">
+        <div class="project-icon">📋</div>
+        <div class="project-name">Sistema de Tareas</div>
+        <div class="project-desc">Aplicación CRUD completa con autenticación de usuarios, base de datos y diseño responsivo.</div>
+        <div class="project-techs">
+          <span class="tech tech-react">React</span>
+          <span class="tech tech-php">PHP</span>
+          <span class="tech tech-sql">MySQL</span>
+        </div>
+        <span class="project-status status-soon">📅 Próximamente</span>
+      </div>
+      <div class="project-card">
+        <div class="project-icon">📊</div>
+        <div class="project-name">Dashboard de Análisis</div>
+        <div class="project-desc">Visualización de datos reales con Python y gráficos interactivos.</div>
+        <div class="project-techs">
+          <span class="tech tech-py">Python</span>
+          <span class="tech tech-sql">SQL</span>
+          <span class="tech tech-js">JavaScript</span>
+        </div>
+        <span class="project-status status-soon">📅 Próximamente</span>
+      </div>
+      <div class="project-card">
+        <div class="project-icon">🛒</div>
+        <div class="project-name">Tienda Online</div>
+        <div class="project-desc">E-commerce con catálogo, carrito de compras y sistema de autenticación JWT.</div>
+        <div class="project-techs">
+          <span class="tech tech-react">React</span>
+          <span class="tech tech-java">Java</span>
+          <span class="tech tech-sql">MySQL</span>
+        </div>
+        <span class="project-status status-soon">📅 Próximamente</span>
+      </div>
+      <div class="project-card">
+        <div class="project-icon">🤖</div>
+        <div class="project-name">Script de Automatización</div>
+        <div class="project-desc">Automatización de reportes con Python: descarga datos de APIs y genera informes.</div>
+        <div class="project-techs">
+          <span class="tech tech-py">Python</span>
+          <span class="tech tech-api">APIs</span>
+        </div>
+        <span class="project-status status-soon">📅 Próximamente</span>
+      </div>
+      <div class="project-card">
+        <div class="project-icon">🔐</div>
+        <div class="project-name">Sistema de Autenticación</div>
+        <div class="project-desc">Login/registro con tokens JWT, roles de usuario y protección de rutas en Java.</div>
+        <div class="project-techs">
+          <span class="tech tech-java">Java</span>
+          <span class="tech tech-api">JWT</span>
+          <span class="tech tech-sql">MySQL</span>
+        </div>
+        <span class="project-status status-soon">📅 Próximamente</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="fade-in">
+    <div class="section-label">// 05. Contacto</div>
+    <h2 class="section-title">¡Hablemos!</h2>
+    <div class="contact-box">
+      <h3>¿Tienes un proyecto o una oportunidad?</h3>
+      <p>Estoy disponible para trabajos freelance, posiciones junior o colaboraciones. No dudes en escribirme.</p>
+      <div class="contact-links">
+        <a href="mailto:leivaleivaja26@gmail.com" class="contact-link primary">✉️ Enviar email</a>
+        <a href="https://wa.me/51929660258" target="_blank" class="contact-link">💬 WhatsApp</a>
+        <a href="https://www.linkedin.com/in/leiva-leiva-juan-alexis/" target="_blank" class="contact-link">💼 LinkedIn</a>
+        <a href="https://github.com/JuanALeivaLeiva" target="_blank" class="contact-link">🐙 GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Diseñado y desarrollado por <span>Juan Alexis Leiva</span> · 2025 · Huancayo, Perú 🇵🇪</p>
+  </footer>
+
+  <!--
+    🔗 ASÍ SE VINCULA EL JAVASCRIPT:
+    El <script src="..."> va al FINAL del body, no en el <head>.
+    ¿Por qué? Porque el HTML debe cargarse primero para que
+    el JS pueda encontrar y manipular los elementos de la página.
+    Si lo pones arriba, el JS intentaría manipular elementos
+    que todavía no existen — y fallaría.
+  -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>
