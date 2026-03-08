@@ -1,121 +1,63 @@
-/*
-  =====================================================
-  🎨 styles.css — LA APARIENCIA
-  =====================================================
-  Este archivo define CÓMO SE VE la página:
-  colores, tamaños, fuentes, espaciados, animaciones.
-
-  El HTML dice "aquí hay un botón".
-  El CSS dice "ese botón es verde, mide 14px y tiene bordes redondeados".
-
-  Piénsalo como el diseño interior de la casa:
-  los colores de las paredes, los muebles, la iluminación.
-  =====================================================
-*/
-
-
 /* =====================================================
-   VARIABLES CSS (Custom Properties)
-   =====================================================
-   Las variables empiezan con -- y se declaran dentro de :root
-   que representa el elemento raíz (toda la página).
-
-   VENTAJA CLAVE: Si mañana quieres cambiar el color
-   principal de verde a azul, solo cambias --accent aquí
-   y se actualiza en TODOS los lugares donde se use.
-   Sin variables tendrías que buscar y reemplazar
-   el mismo color en 50 lugares distintos.
+   styles.css — Portfolio Juan Alexis Leiva
+   Full-Stack Developer Junior
 ===================================================== */
+
 :root {
-    --bg:       #080c10;        /* Color de fondo principal */
-    --surface:  #0e1420;        /* Fondo de tarjetas y paneles */
-    --border:   #1a2235;        /* Color de bordes */
-    --accent:   #00e5ff;        /* Color principal (cyan) */
-    --accent2:  #7c3aed;        /* Color secundario (violeta) */
-    --text:     #e2e8f0;        /* Color del texto principal */
-    --muted:    #64748b;        /* Color del texto secundario/apagado */
-    --heading:  'Syne', sans-serif;   /* Fuente para títulos */
-    --body:     'Outfit', sans-serif; /* Fuente para texto normal */
+    --bg:       #080c10;
+    --surface:  #0e1420;
+    --surface2: #131b28;
+    --border:   #1a2235;
+    --accent:   #00e5ff;
+    --accent2:  #7c3aed;
+    --accent3:  #00c864;
+    --text:     #e2e8f0;
+    --muted:    #64748b;
+    --heading:  'Syne', sans-serif;
+    --body:     'Outfit', sans-serif;
   }
   
-  
-  /* =====================================================
-     RESET
-     =====================================================
-     Por defecto, cada navegador (Chrome, Firefox, Edge)
-     aplica sus propios márgenes y estilos a los elementos.
-     Esto causa inconsistencias entre navegadores.
-  
-     El "reset" los elimina todos para partir de cero
-     y tener control total sobre el diseño.
-  
-     box-sizing: border-box es fundamental:
-     hace que el padding y border se incluyan DENTRO
-     del ancho del elemento, no lo agranden.
-     
-     Ejemplo sin border-box:
-     div { width: 200px; padding: 20px } → ocupa 240px ❌
-     
-     Ejemplo con border-box:
-     div { width: 200px; padding: 20px } → sigue siendo 200px ✅
-  ===================================================== */
   *, *::before, *::after {
-    margin: 0;
-    padding: 0;
+    margin: 0; padding: 0;
     box-sizing: border-box;
   }
   
-  /* scroll-behavior: smooth hace que los links internos
-     (#sobre-mi, #proyectos) naveguen suavemente en lugar
-     de saltar abruptamente */
   html { scroll-behavior: smooth; }
   
   body {
     background: var(--bg);
     color: var(--text);
     font-family: var(--body);
-    line-height: 1.6;   /* Espaciado entre líneas de texto */
-    overflow-x: hidden; /* Oculta scroll horizontal */
+    line-height: 1.6;
+    overflow-x: hidden;
   }
   
-  /* Patrón de puntos en el fondo usando un pseudo-elemento.
-     Los pseudo-elementos (::before, ::after) son elementos
-     "fantasma" que crea el CSS sin necesidad de HTML extra.
-     position: fixed los fija en pantalla aunque hagas scroll. */
   body::before {
     content: '';
     position: fixed;
-    inset: 0; /* Equivale a: top:0; right:0; bottom:0; left:0 */
+    inset: 0;
     background-image: radial-gradient(rgba(0,229,255,0.04) 1px, transparent 1px);
     background-size: 28px 28px;
-    pointer-events: none; /* No interfiere con clics */
-    z-index: 0;           /* Va detrás de todo */
+    pointer-events: none;
+    z-index: 0;
   }
-  
   
   /* =====================================================
      NAVBAR
-     =====================================================
-     position: fixed saca al elemento del flujo normal
-     y lo fija en relación a la ventana del navegador.
-     Así la barra siempre se ve aunque hagas scroll hacia abajo.
-  
-     backdrop-filter: blur() aplica desenfoque a lo que
-     hay DETRÁS del elemento — el efecto "vidrio esmerilado"
-     muy popular en diseños modernos (glassmorphism).
   ===================================================== */
   nav {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 100; /* Número alto para que quede encima de todo */
+    z-index: 100;
     padding: 16px 40px;
     display: flex;
-    justify-content: space-between; /* Logo a la izquierda, links a la derecha */
-    align-items: center;            /* Alineación vertical centrada */
-    background: rgba(8,12,16,0.85); /* Fondo semi-transparente */
-    backdrop-filter: blur(12px);    /* Efecto glassmorphism */
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(8,12,16,0.9);
+    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.3s;
   }
   
   .nav-logo {
@@ -123,46 +65,65 @@
     font-weight: 800;
     font-size: 18px;
     color: var(--accent);
-    text-decoration: none; /* Quita el subrayado de los links */
+    text-decoration: none;
+    letter-spacing: -0.5px;
   }
   
   .nav-links {
     display: flex;
-    gap: 32px;       /* Espacio entre los items del menú */
-    list-style: none; /* Quita los bullets de la lista */
+    gap: 28px;
+    list-style: none;
   }
   
   .nav-links a {
     color: var(--muted);
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
-    transition: color 0.2s ease; /* El cambio de color toma 0.2 segundos */
+    transition: color 0.2s;
   }
   
-  /* :hover se activa cuando el cursor está encima del elemento */
   .nav-links a:hover { color: var(--accent); }
   
+  /* Botón hamburguesa — solo visible en móvil */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Animación del hamburger cuando está abierto */
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
   
   /* =====================================================
-     HERO SECTION
-     =====================================================
-     min-height: 100vh hace que la sección ocupe al menos
-     el 100% de la altura de la ventana del navegador.
-     vh = viewport height (altura de la ventana visible).
+     HERO
   ===================================================== */
   .hero {
     min-height: 100vh;
     display: flex;
-    align-items: center;     /* Centra verticalmente */
-    justify-content: center; /* Centra horizontalmente */
+    align-items: center;
+    justify-content: center;
     text-align: center;
     padding: 100px 24px 60px;
     position: relative;
     z-index: 1;
   }
   
-  /* Efecto de luz de fondo detrás del título */
   .hero::after {
     content: '';
     position: absolute;
@@ -191,20 +152,6 @@
     animation: fadeDown 0.6s ease both;
   }
   
-  /* =====================================================
-     TIPOGRAFÍA
-     =====================================================
-     clamp(mínimo, preferido, máximo) es una función CSS
-     para tamaños de fuente responsivos.
-     
-     clamp(36px, 7vw, 72px) significa:
-     - Nunca menor a 36px
-     - Idealmente 7% del ancho de la ventana
-     - Nunca mayor a 72px
-     
-     Así el título se adapta solo a cualquier pantalla
-     sin necesitar media queries para la fuente.
-  ===================================================== */
   h1 {
     font-family: var(--heading);
     font-size: clamp(36px, 7vw, 72px);
@@ -214,9 +161,6 @@
     animation: fadeDown 0.6s 0.1s ease both;
   }
   
-  /* Truco para texto con gradiente:
-     1. background-clip: text recorta el gradiente en forma del texto
-     2. color: transparent hace el texto transparente para ver el gradiente */
   .gradient-text {
     background: linear-gradient(135deg, var(--accent), var(--accent2));
     -webkit-background-clip: text;
@@ -227,32 +171,48 @@
   .hero-desc {
     font-size: clamp(15px, 2.5vw, 18px);
     color: var(--muted);
-    max-width: 560px;
+    max-width: 580px;
     margin: 0 auto 36px;
     line-height: 1.7;
     animation: fadeDown 0.6s 0.2s ease both;
   }
   
+  .hero-desc strong { color: var(--text); }
+  
   .hero-buttons {
     display: flex;
-    gap: 14px;
+    gap: 12px;
     justify-content: center;
-    flex-wrap: wrap; /* En pantallas pequeñas los botones bajan a la siguiente línea */
+    flex-wrap: wrap;
     animation: fadeDown 0.6s 0.3s ease both;
+  }
+  
+  .available-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,200,100,0.08);
+    border: 1px solid rgba(0,200,100,0.25);
+    color: var(--accent3);
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+    animation: fadeDown 0.6s 0.05s ease both;
+  }
+  
+  .dot {
+    width: 7px; height: 7px;
+    background: var(--accent3);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
   }
   
   /* =====================================================
      BOTONES
-     =====================================================
-     Dos variantes del mismo botón base:
-     .btn-primary → sólido (acción principal)
-     .btn-outline → solo borde (acción secundaria)
-     
-     Esta técnica de "componente base + modificador"
-     es un patrón muy usado en CSS profesional.
   ===================================================== */
   .btn {
-    padding: 12px 28px;
+    padding: 12px 24px;
     border-radius: 8px;
     font-family: var(--body);
     font-size: 14px;
@@ -261,17 +221,29 @@
     cursor: pointer;
     border: none;
     transition: all 0.25s ease;
+    letter-spacing: 0.2px;
   }
   
   .btn-primary {
     background: var(--accent);
     color: #080c10;
   }
-  
   .btn-primary:hover {
     background: #33eaff;
-    transform: translateY(-2px); /* Sube 2px al hacer hover */
+    transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(0,229,255,0.25);
+  }
+  
+  /* Nuevo botón verde para CV */
+  .btn-accent {
+    background: rgba(0,200,100,0.12);
+    color: var(--accent3);
+    border: 1px solid rgba(0,200,100,0.35);
+  }
+  .btn-accent:hover {
+    background: rgba(0,200,100,0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,200,100,0.15);
   }
   
   .btn-outline {
@@ -279,48 +251,18 @@
     color: var(--text);
     border: 1px solid var(--border);
   }
-  
   .btn-outline:hover {
     border-color: var(--accent);
     color: var(--accent);
     transform: translateY(-2px);
   }
   
-  /* Badge verde "disponible para trabajar" */
-  .available-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(0,200,100,0.08);
-    border: 1px solid rgba(0,200,100,0.25);
-    color: #00c864;
-    font-size: 12px;
-    padding: 6px 14px;
-    border-radius: 20px;
-    margin-bottom: 28px;
-    animation: fadeDown 0.6s 0.05s ease both;
-  }
-  
-  /* El puntito que parpadea */
-  .dot {
-    width: 7px;
-    height: 7px;
-    background: #00c864;
-    border-radius: 50%;
-    animation: pulse 2s infinite; /* Se repite infinitamente */
-  }
-  
-  
   /* =====================================================
      SECCIONES
-     =====================================================
-     Todas las secciones comparten estos estilos base.
-     max-width + margin: 0 auto centra el contenido
-     y limita su ancho máximo para mejor legibilidad.
   ===================================================== */
   section {
     padding: 90px 24px;
-    max-width: 900px;
+    max-width: 920px;
     margin: 0 auto;
     position: relative;
     z-index: 1;
@@ -340,7 +282,6 @@
     font-size: clamp(24px, 4vw, 36px);
     font-weight: 700;
     margin-bottom: 14px;
-    line-height: 1.2;
   }
   
   .section-sub {
@@ -351,27 +292,85 @@
     margin-bottom: 48px;
   }
   
-  
   /* =====================================================
-     SOBRE MÍ — GRID DE STATS
-     =====================================================
-     repeat(auto-fit, minmax(180px, 1fr)) es magia de CSS Grid:
-     - Crea tantas columnas como quepan en el contenedor
-     - Cada columna mide mínimo 180px y máximo 1fr (fracción disponible)
-     - Se adapta SOLO a cualquier tamaño de pantalla
+     SOBRE MÍ — Layout con foto
   ===================================================== */
+  .about-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  
+  /* Columna izquierda: foto */
+  .about-photo-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 16px;
+    border: 2px solid var(--border);
+    overflow: hidden;
+    background: var(--surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* Placeholder con iniciales mientras no hay foto */
+  .photo-placeholder {
+    font-family: var(--heading);
+    font-size: 48px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    user-select: none;
+  }
+  
+  .about-photo-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .info-item {
+    font-size: 13px;
+    color: var(--muted);
+    padding: 8px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    line-height: 1.4;
+  }
+  
+  /* Columna derecha */
+  .about-right { display: flex; flex-direction: column; gap: 20px; }
+  
   .about-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 16px;
-    margin-bottom: 40px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
   
   .stat-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 24px 20px;
+    padding: 20px 16px;
     text-align: center;
     transition: border-color 0.3s, transform 0.2s;
   }
@@ -383,45 +382,42 @@
   
   .stat-num {
     font-family: var(--heading);
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 800;
     color: var(--accent);
     line-height: 1;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
   
-  .stat-label { font-size: 13px; color: var(--muted); }
+  .stat-label { font-size: 12px; color: var(--muted); }
   
   .about-text {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 28px 32px;
-    font-size: 15px;
+    padding: 24px;
+    font-size: 14px;
     line-height: 1.8;
   }
   
-  /* El selector p + p significa "un <p> que va inmediatamente
-     después de otro <p>" — aplica margen solo entre párrafos,
-     no antes del primero. */
-  .about-text p + p { margin-top: 14px; }
+  .about-text p + p { margin-top: 12px; }
   .about-text strong { color: var(--accent); }
-  
   
   /* =====================================================
      HABILIDADES
   ===================================================== */
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: 16px;
+    margin-bottom: 36px;
   }
   
   .skill-group {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 24px;
+    padding: 22px;
     transition: border-color 0.3s;
   }
   
@@ -429,26 +425,22 @@
   
   .skill-group-title {
     font-family: var(--heading);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     color: var(--accent);
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
   
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
   
   .skill-tag {
     background: rgba(255,255,255,0.04);
     border: 1px solid var(--border);
     color: var(--text);
-    font-size: 13px;
-    padding: 5px 12px;
+    font-size: 12px;
+    padding: 4px 11px;
     border-radius: 6px;
     transition: all 0.2s;
   }
@@ -459,52 +451,75 @@
     color: var(--accent);
   }
   
-  
-  /* =====================================================
-     EXPERIENCIA — TIMELINE VERTICAL
-     =====================================================
-     El efecto de línea vertical se crea con un truco CSS:
-     
-     1. .timeline tiene position: relative (referencia para hijos)
-     2. .timeline::before es una línea vertical de 1px
-        posicionada de forma absoluta a la izquierda
-     3. Cada .timeline-item::before es el punto (círculo)
-        posicionado sobre esa línea
-     
-     Todo sin JavaScript, solo CSS puro.
-  ===================================================== */
-  .timeline {
-    position: relative;
-    padding-left: 28px;
+  /* Barras de nivel */
+  .skill-levels {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
   }
   
-  /* La línea vertical */
+  .skill-levels-title {
+    font-family: var(--heading);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 20px;
+    letter-spacing: 0.3px;
+  }
+  
+  .skill-bar-list { display: flex; flex-direction: column; gap: 14px; }
+  
+  .skill-bar-item {}
+  
+  .skill-bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  
+  .skill-pct { color: var(--accent); font-weight: 600; }
+  
+  .skill-bar-track {
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  
+  .skill-bar-fill {
+    height: 100%;
+    width: 0%;  /* Empieza en 0, el JS lo anima */
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 3px;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* =====================================================
+     TIMELINE EXPERIENCIA
+  ===================================================== */
+  .timeline { position: relative; padding-left: 28px; }
+  
   .timeline::before {
     content: '';
     position: absolute;
-    left: 0;
-    top: 8px;
-    bottom: 0;
+    left: 0; top: 8px; bottom: 0;
     width: 1px;
     background: linear-gradient(to bottom, var(--accent), transparent);
   }
   
-  .timeline-item {
-    position: relative;
-    margin-bottom: 40px;
-  }
+  .timeline-item { position: relative; margin-bottom: 36px; }
   
-  /* El punto sobre la línea */
   .timeline-item::before {
     content: '';
     position: absolute;
-    left: -32px;
-    top: 8px;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%; /* 50% = círculo perfecto */
+    left: -32px; top: 8px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
     background: var(--accent);
-    box-shadow: 0 0 10px rgba(0,229,255,0.5); /* Efecto de brillo */
+    box-shadow: 0 0 10px rgba(0,229,255,0.5);
   }
   
   .timeline-date {
@@ -512,29 +527,19 @@
     color: var(--accent);
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
     font-weight: 600;
   }
   
   .timeline-role {
     font-family: var(--heading);
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 700;
     margin-bottom: 3px;
   }
   
-  .timeline-company {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 10px;
-  }
-  
-  .timeline-desc {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-  
+  .timeline-company { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+  .timeline-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
   
   /* =====================================================
      PROYECTOS
@@ -549,11 +554,11 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 26px;
+    padding: 24px;
     transition: all 0.25s ease;
     display: flex;
-    flex-direction: column; /* Los hijos se apilan verticalmente */
-    gap: 12px;
+    flex-direction: column;
+    gap: 10px;
   }
   
   .project-card:hover {
@@ -562,36 +567,19 @@
     box-shadow: 0 16px 40px rgba(0,0,0,0.3);
   }
   
-  .project-icon { font-size: 28px; }
+  .project-icon { font-size: 26px; }
+  .project-name { font-family: var(--heading); font-size: 15px; font-weight: 700; }
+  .project-desc { font-size: 13px; color: var(--muted); line-height: 1.6; flex: 1; }
   
-  .project-name {
-    font-family: var(--heading);
-    font-size: 16px;
-    font-weight: 700;
-  }
+  .project-techs { display: flex; flex-wrap: wrap; gap: 6px; }
   
-  .project-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.6;
-    flex: 1; /* Ocupa el espacio disponible, empujando el status al fondo */
-  }
-  
-  .project-techs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  
-  /* Estilos base del tag de tecnología */
   .tech {
     font-size: 11px;
-    padding: 3px 9px;
+    padding: 3px 8px;
     border-radius: 4px;
     font-weight: 500;
   }
   
-  /* Una variante de color por tecnología */
   .tech-js    { background: rgba(247,223,30,0.1);  color: #f7df1e; border: 1px solid rgba(247,223,30,0.2); }
   .tech-php   { background: rgba(119,123,237,0.1); color: #9b9dff; border: 1px solid rgba(119,123,237,0.2); }
   .tech-py    { background: rgba(0,229,255,0.1);   color: var(--accent); border: 1px solid rgba(0,229,255,0.2); }
@@ -602,16 +590,85 @@
   .tech-css   { background: rgba(21,114,182,0.1);  color: #1572b6; border: 1px solid rgba(21,114,182,0.2); }
   .tech-api   { background: rgba(255,255,255,0.05);color: #ccc;    border: 1px solid var(--border); }
   
+  .project-links { display: flex; gap: 8px; }
+  
+  .project-link {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  
+  .project-link:hover { border-color: var(--accent); color: var(--accent); }
+  
+  .project-link-live {
+    border-color: rgba(255,80,80,0.3);
+    color: #ff6b6b;
+  }
+  .project-link-live:hover { border-color: #ff6b6b; color: #ff6b6b; }
+  
   .project-status {
     font-size: 11px;
     padding: 3px 10px;
     border-radius: 20px;
-    width: fit-content; /* Solo ocupa el ancho de su contenido */
+    width: fit-content;
   }
   
   .status-building { background: rgba(255,160,0,0.1); color: #ffa500; border: 1px solid rgba(255,160,0,0.25); }
   .status-soon     { background: rgba(100,116,139,0.1); color: var(--muted); border: 1px solid var(--border); }
   
+  /* =====================================================
+     CERTIFICACIONES
+  ===================================================== */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  
+  .cert-card {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+    transition: all 0.25s;
+  }
+  
+  .cert-card:hover {
+    border-color: rgba(0,229,255,0.25);
+    transform: translateY(-3px);
+  }
+  
+  /* Card destacada para el título universitario */
+  .cert-highlight {
+    border-color: rgba(0,229,255,0.2);
+    background: rgba(0,229,255,0.03);
+  }
+  
+  .cert-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+  
+  .cert-name {
+    font-family: var(--heading);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  
+  .cert-issuer {
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  
+  .cert-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
   
   /* =====================================================
      CONTACTO
@@ -623,33 +680,30 @@
     padding: 48px;
     text-align: center;
     position: relative;
-    overflow: hidden; /* Oculta el glow que sale por los bordes */
+    overflow: hidden;
   }
   
-  /* Luz de fondo decorativa */
   .contact-box::before {
     content: '';
     position: absolute;
-    top: -60px;
-    left: 50%;
+    top: -60px; left: 50%;
     transform: translateX(-50%);
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(0,229,255,0.06), transparent 70%);
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(0,229,255,0.05), transparent 70%);
     pointer-events: none;
   }
   
   .contact-box h3 {
     font-family: var(--heading);
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
   
   .contact-box p {
     color: var(--muted);
     font-size: 15px;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
     max-width: 420px;
     margin-left: auto;
     margin-right: auto;
@@ -657,7 +711,7 @@
   
   .contact-links {
     display: flex;
-    gap: 14px;
+    gap: 12px;
     justify-content: center;
     flex-wrap: wrap;
   }
@@ -665,8 +719,8 @@
   .contact-link {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 11px 22px;
+    gap: 7px;
+    padding: 10px 20px;
     border-radius: 8px;
     text-decoration: none;
     font-size: 14px;
@@ -694,13 +748,12 @@
     color: #080c10;
   }
   
-  
   /* =====================================================
      FOOTER
   ===================================================== */
   footer {
     text-align: center;
-    padding: 32px 24px;
+    padding: 28px 24px;
     border-top: 1px solid var(--border);
     color: var(--muted);
     font-size: 13px;
@@ -710,82 +763,88 @@
   
   footer span { color: var(--accent); }
   
-  
   /* =====================================================
-     ANIMACIONES con @keyframes
-     =====================================================
-     @keyframes define "fotogramas" de una animación.
-     from = estado inicial
-     to   = estado final
-     
-     El navegador interpola (calcula) todos los estados
-     intermedios automáticamente.
-     
-     Se usan con la propiedad animation:
-     animation: nombre duración delay tipo;
+     ANIMACIONES
   ===================================================== */
   @keyframes fadeDown {
     from { opacity: 0; transform: translateY(-16px); }
     to   { opacity: 1; transform: translateY(0); }
   }
   
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  
-  /* Animación del puntito verde que parpadea */
   @keyframes pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
     50%       { opacity: 0.5; transform: scale(0.8); }
   }
   
-  
-  /* =====================================================
-     CLASES PARA ANIMACIÓN DE SCROLL (usadas por JS)
-     =====================================================
-     El JavaScript agrega la clase "visible" cuando el
-     elemento entra en pantalla. El CSS hace la transición.
-     
-     Separación de responsabilidades:
-     - JS decide CUÁNDO animar
-     - CSS decide CÓMO animar
-  ===================================================== */
   .fade-in {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
   
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
   
   /* =====================================================
-     MEDIA QUERIES — Diseño Responsivo
-     =====================================================
-     @media (max-width: Xpx) aplica estilos SOLO cuando
-     la pantalla es más angosta que X píxeles.
-     
-     Esta técnica se llama "mobile-first" al revés
-     (aquí partimos del diseño de escritorio y ajustamos
-     para pantallas pequeñas).
-     
-     Breakpoints comunes:
-     1200px → monitores grandes
-     768px  → tablets
-     480px  → teléfonos
+     RESPONSIVE — MÓVIL
   ===================================================== */
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     nav { padding: 14px 20px; }
-    .nav-links { gap: 18px; }
-    .contact-box { padding: 32px 20px; }
+  
+    /* Ocultar links y mostrar hamburguesa */
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: rgba(8,12,16,0.98);
+      backdrop-filter: blur(12px);
+      flex-direction: column;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      padding: 8px 0;
+    }
+  
+    .nav-links.open { display: flex; }
+  
+    .nav-links li a {
+      display: block;
+      padding: 14px 24px;
+      font-size: 15px;
+      border-bottom: 1px solid var(--border);
+    }
+  
+    .hamburger { display: flex; }
+  
+    /* About layout en móvil: columna única */
+    .about-layout {
+      grid-template-columns: 1fr;
+    }
+  
+    .about-photo-wrap {
+      flex-direction: row;
+      align-items: center;
+    }
+  
+    .about-photo {
+      width: 100px;
+      height: 100px;
+      flex-shrink: 0;
+    }
+  
+    .photo-placeholder { font-size: 28px; }
+  
+    .about-grid { grid-template-columns: repeat(2, 1fr); }
+  
+    .contact-box { padding: 28px 20px; }
+  
+    .hero-buttons { flex-direction: column; align-items: center; }
+  
+    .btn { width: 100%; max-width: 280px; text-align: center; }
   }
   
-  /* En teléfonos muy pequeños, ocultamos los links del medio
-     del menú para que no se apilen */
   @media (max-width: 480px) {
-    .nav-links li:not(:first-child):not(:last-child) { display: none; }
+    .about-photo-wrap { flex-direction: column; }
+    .about-photo { width: 120px; height: 120px; align-self: center; }
+    .certs-grid { grid-template-columns: 1fr; }
   }
